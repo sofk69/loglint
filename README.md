@@ -9,35 +9,20 @@ loglint
 4) sensitive — сообщение не должно содержать чувствительные данные: `password`, `token`, `api_key` и другие.
 
 Структура проекта:
-loglint/
-├── cmd/
-│   └── loglint/
-│       └── main.go
-├── pkg/
-│   └── analyzer/
-│       ├── analyzer.go
-│       ├── analyzer_test.go
-│       ├── log_call.go
-│       ├── plugin.go
-│       ├── config/
-│       │   └── config.go
-│       └── rules/
-│           ├── lowercase.go
-│           ├── english.go
-│           ├── special_chars.go
-│           └── sensitive.go
-├── testdata/
-│   └── src/
-│       ├── a/
-│       │   └── a.go
-│       └── valid/
-│           └── valid.go
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-├── .golangci.yml
-└── go.mod
-
+cmd/loglint/main.go — точка входа для standalone запуска
+pkg/analyzer/analyzer.go — основной анализатор
+pkg/analyzer/analyzer_test.go — интеграционный тест
+pkg/analyzer/log_call.go — поиск лог-вызовов в AST
+pkg/analyzer/plugin.go — плагин для golangci-lint
+pkg/analyzer/config/config.go — структура конфигурации
+pkg/analyzer/rules/lowercase.go — правило: строчная буква
+pkg/analyzer/rules/english.go — правило: английский язык
+pkg/analyzer/rules/special_chars.go — правило: спецсимволы и эмодзи
+pkg/analyzer/rules/sensitive.go — правило: чувствительные данные
+testdata/src/a/a.go — тестовые примеры с ошибками
+testdata/src/valid/valid.go — тестовые примеры без ошибок
+.github/workflows/ci.yml — GitHub Actions CI
+.golangci.yml — конфигурация golangci-lint
 
 Сборка:
 git clone https://github.com/sofk69/loglint
