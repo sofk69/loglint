@@ -1,6 +1,7 @@
 package analyzer
 
 import (
+	"fmt"
 	"go/ast"
 
 	"github.com/sofk69/loglint/pkg/analyzer/rules"
@@ -48,20 +49,29 @@ func run(pass *analysis.Pass) (interface{}, error) {
 }
 
 func validate(pass *analysis.Pass, node ast.Node, msg string) {
+	diagnostics := []string{}
 
 	if !rules.IsLowercase(msg) {
+		diagnostics = append(diagnostics, "lowercase")
 		pass.Reportf(node.Pos(), "log message should start with lowercase")
 	}
 
 	if !rules.IsEnglish(msg) {
+		diagnostics = append(diagnostics, "english")
 		pass.Reportf(node.Pos(), "log message must be english")
 	}
 
 	if rules.HasSpecialChars(msg) {
+		diagnostics = append(diagnostics, "special")
 		pass.Reportf(node.Pos(), "log message contains special characters")
 	}
 
 	if rules.ContainsSensitive(msg) {
+		diagnostics = append(diagnostics, "sensitive")
 		pass.Reportf(node.Pos(), "log message may contain sensitive data")
+	}
+
+	if len(diagnostics) > 0 {
+		fmt.Printf("Line with message %q, Diagnostics: %v\n", msg, diagnostics)
 	}
 }
