@@ -10,9 +10,13 @@ loglint
 
 Структура проекта:
 cmd/loglint/main.go — точка входа для standalone запуска
+
 pkg/analyzer/analyzer.go — основной анализатор
+
 pkg/analyzer/analyzer_test.go — интеграционный тест
+
 pkg/analyzer/log_call.go — поиск лог-вызовов в AST
+
 pkg/analyzer/plugin.go — плагин для golangci-lint
 pkg/analyzer/config/config.go — структура конфигурации
 pkg/analyzer/rules/lowercase.go — правило: строчная буква
