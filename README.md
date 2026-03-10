@@ -10,22 +10,31 @@ loglint
 
 Структура проекта:
 loglint/
-├── cmd/loglint/main.go
-├── pkg/analyzer/
-│   ├── analyzer.go
-│   ├── analyzer_test.go
-│   ├── log_call.go
-│   ├── plugin.go
-│   ├── config/config.go
-│   └── rules/
-│       ├── lowercase.go
-│       ├── english.go
-│       ├── special_chars.go
-│       └── sensitive.go
-├── testdata/src/
-│   ├── a/a.go
-│   └── valid/valid.go
-├── .github/workflows/ci.yml
+├── cmd/
+│   └── loglint/
+│       └── main.go
+├── pkg/
+│   └── analyzer/
+│       ├── analyzer.go
+│       ├── analyzer_test.go
+│       ├── log_call.go
+│       ├── plugin.go
+│       ├── config/
+│       │   └── config.go
+│       └── rules/
+│           ├── lowercase.go
+│           ├── english.go
+│           ├── special_chars.go
+│           └── sensitive.go
+├── testdata/
+│   └── src/
+│       ├── a/
+│       │   └── a.go
+│       └── valid/
+│           └── valid.go
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── .golangci.yml
 └── go.mod
 
