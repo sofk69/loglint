@@ -13,14 +13,19 @@ var sensitive = []string{
 	"credential",
 }
 
+var extraSensitive []string
+
+func SetExtraSensitive(keywords []string) {
+	extraSensitive = keywords
+}
+
 func ContainsSensitive(msg string) bool {
 	msg = strings.ToLower(msg)
-
-	for _, s := range sensitive {
+	all := append(sensitive, extraSensitive...)
+	for _, s := range all {
 		if strings.Contains(msg, s) {
 			return true
 		}
 	}
-
 	return false
 }

@@ -1,10 +1,19 @@
-version: "2"
-
-run:
-  timeout: 5m
-
 linters:
   enable:
-    - govet
-    - errcheck
-    - staticcheck
+    - loglint
+
+linters-settings:
+  custom:
+    loglint:
+      path: ./bin/loglint.so
+      description: "Log message linter"
+      original-url: github.com/sofk69/loglint
+      settings:
+        disable-lowercase: false
+        disable-english: false
+        disable-special-chars: false
+        disable-sensitive: false
+        extra-sensitive-keywords:
+          - "jwt"
+          - "bearer"
+          - "access_token"
