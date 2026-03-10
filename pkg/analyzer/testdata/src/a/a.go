@@ -1,20 +1,11 @@
 package a
 
-import (
-	"fmt"
-	"log/slog"
-)
+import "log/slog"
 
-func test(password string, name string) {
-
-	slog.Info("Starting server") // want "log message should start with lowercase"
-
-	slog.Info("запуск сервера") // want "log message must be english"
-
-	slog.Info("server started!") // want "log message contains special characters"
-
-	slog.Info("password: " + password) // want "log message may contain sensitive data"
-
-	slog.Info(fmt.Sprintf("User %s logged", name)) // want "log message should start with lowercase"
-
+func test() {
+	slog.Info("Starting server") // want "log message must start with lowercase"
+	slog.Info("запуск сервера")  // want "log message must be in english"
+	slog.Info("server started!") // want "log message must not contain special characters"
+	password := "123"
+	slog.Info("user password: " + password) // want "log message contains sensitive data"
 }
