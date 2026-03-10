@@ -7,17 +7,25 @@ import (
 )
 
 func isLogCall(call *ast.CallExpr) bool {
-
 	sel, ok := call.Fun.(*ast.SelectorExpr)
 	if !ok {
 		return false
 	}
 
-	switch sel.Sel.Name {
-	case "Info", "Error", "Warn", "Debug":
-		return true
+	if pkg, ok := sel.X.(*ast.Ident); ok {
+		if pkg.Name == "slog" {
+			switch sel.Sel.Name {
+			case "Info", "Error", "Warn", "Debug":
+				return true
+			}
+		}
+		if pkg.Name == "zap" {
+			switch sel.Sel.Name {
+			case "Info", "Error", "Warn", "Debug":
+				return true
+			}
+		}
 	}
-
 	return false
 }
 
