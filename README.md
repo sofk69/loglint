@@ -18,14 +18,23 @@ pkg/analyzer/analyzer_test.go — интеграционный тест
 pkg/analyzer/log_call.go — поиск лог-вызовов в AST
 
 pkg/analyzer/plugin.go — плагин для golangci-lint
+
 pkg/analyzer/config/config.go — структура конфигурации
+
 pkg/analyzer/rules/lowercase.go — правило: строчная буква
+
 pkg/analyzer/rules/english.go — правило: английский язык
+
 pkg/analyzer/rules/special_chars.go — правило: спецсимволы и эмодзи
+
 pkg/analyzer/rules/sensitive.go — правило: чувствительные данные
+
 testdata/src/a/a.go — тестовые примеры с ошибками
+
 testdata/src/valid/valid.go — тестовые примеры без ошибок
+
 .github/workflows/ci.yml — GitHub Actions CI
+
 .golangci.yml — конфигурация golangci-lint
 
 Сборка:
