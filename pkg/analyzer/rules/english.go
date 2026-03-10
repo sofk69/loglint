@@ -5,7 +5,7 @@ func IsEnglish(msg string) bool {
 		if !((r >= 'a' && r <= 'z') ||
 			(r >= 'A' && r <= 'Z') ||
 			(r >= '0' && r <= '9') ||
-			r == ' ' || r == '.' || r == ',') {
+			r == ' ') {
 			return false
 		}
 	}
