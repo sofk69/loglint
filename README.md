@@ -47,8 +47,8 @@ go run ./cmd/loglint ./...
 Через golangci-lint:
 Соберите плагин как `.so` файл:
 go build -buildmode=plugin -tags=golangci -o bin/loglint.so .
-Добавьте в `.golangci.yml`:
 
+Добавьте в `.golangci.yml`:
 linters:
   enable:
     - loglint
