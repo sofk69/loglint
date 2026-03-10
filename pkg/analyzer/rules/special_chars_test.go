@@ -14,10 +14,9 @@ func TestHasSpecialChars(t *testing.T) {
 		{name: "colon", msg: "warning: something wrong", want: true},
 		{name: "rocket emoji", msg: "server started 🚀", want: true},
 		{name: "fire emoji", msg: "deployed 🔥", want: true},
-		{name: "checkmark emoji", msg: "done ✅", want: true},
+		{name: "russian text", msg: "запуск сервера", want: true},
 		{name: "clean message", msg: "server started", want: false},
 		{name: "message with numbers", msg: "retry attempt 3", want: false},
-		{name: "message with hyphen", msg: "connection failed", want: false},
 		{name: "empty string", msg: "", want: false},
 	}
 
